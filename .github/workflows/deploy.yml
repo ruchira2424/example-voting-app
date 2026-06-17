@@ -73,7 +73,10 @@ jobs:
             --image=us-central1-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/worker:latest \
             --region=${{ env.REGION }} \
             --platform=managed \
-            --no-allow-unauthenticated
+            --no-allow-unauthenticated \
+            --port=8080 \
+            --command="dotnet" \
+            --args="Worker.dll"
 
   smoke-test:
     runs-on: ubuntu-latest
