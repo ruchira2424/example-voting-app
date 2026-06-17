@@ -8,7 +8,7 @@ on:
 env:
   PROJECT_ID: loyal-burner-493907-u6
   REGION: us-central1
-  REPOSITORY: voting-app-repo
+  REPOSITORY: my-repo 
 
 jobs:
   build:
