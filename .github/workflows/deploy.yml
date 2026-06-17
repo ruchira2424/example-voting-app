@@ -58,6 +58,18 @@ jobs:
             --port=80 \
             --allow-unauthenticated
 
+      - name: Make vote and result public
+        run: |
+          gcloud run services add-iam-policy-binding vote-dev \
+            --region=${{ env.REGION }} \
+            --member="allUsers" \
+            --role="roles/run.invoker"
+          
+          gcloud run services add-iam-policy-binding result-dev \
+            --region=${{ env.REGION }} \
+            --member="allUsers" \
+            --role="roles/run.invoker"
+
       - name: Deploy result to Cloud Run
         run: |
           gcloud run deploy result-dev \
